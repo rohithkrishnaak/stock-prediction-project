@@ -95,5 +95,3 @@ Contributions and suggestions are welcome. Suggested workflow:
 - Create a feature branch
 - Open a pull request describing changes
 
-## License
-Specify a license if you want this project to be open-source (e.g., MIT). If you want me to add a specific license file or badge, tell me which one.
