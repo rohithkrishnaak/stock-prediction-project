@@ -1,37 +1,99 @@
-# Stock Price Prediction Model
-This project uses a simple Linear Regression model to predict future stock closing prices based on historical data. The Python script provides an interactive menu to analyze different stock datasets.
+# Stock Prediction Project
+A simple stock price prediction demo using a linear regression model in Python. This repository contains example CSVs (TSLA, Amazon, GOOGL), a single analysis script (model5.py), and a requirements.txt to reproduce the environment.
 
-## Project Files:
-model5.py: The main Python script that contains the logic for:
-Loading and preparing the stock data.
-Engineering new features (like moving averages).
-Training a Linear Regression model.
-Evaluating the model's performance (MSE, R², MAPE).
-Plotting the actual vs. predicted stock prices.
-Amazon.csv: Historical stock price data for Amazon (AMZN).
-GOOGL.csv: Historical stock price data for Google (GOOGL).
-TSLA.csv: Historical stock price data for Tesla (TSLA).
+## Project overview
+This project demonstrates a straightforward workflow to:
+- Load historical stock price CSVs,
+- Engineer simple time-series features (moving averages, volatility, range),
+- Train a Linear Regression model to predict the next day's closing price,
+- Evaluate model performance (RMSE, MAPE, R²),
+- Visualize actual vs predicted prices.
 
-## How to Use
-### Prerequisites:
-Ensure you have Python installed.
-Install the required libraries:
-pip install pandas scikit-learn matplotlib
+Intended as an educational example rather than a production-ready forecasting pipeline.
 
+## Requirements
+- Python 3.8+ recommended
+- The repository includes a requirements.txt — install dependencies with:
+  pip install -r requirements.txt
 
-## Run the Script:
-Place model5.py, Amazon.csv, GOOGL.csv, and TSLA.csv in the same directory.
-Open your terminal or command prompt and navigate to that directory.
+If you prefer to install only the libraries used by model5.py:
+- pandas
+- numpy
+- scikit-learn
+- matplotlib
 
-## Run the script:
+## Installation
+1. Clone the repository:
+   git clone https://github.com/rohithkrishnaak/stock-prediction-project.git
+2. Change directory:
+   cd stock-prediction-project
+3. Create a virtual environment (optional but recommended):
+   python -m venv venv
+   source venv/bin/activate  # macOS / Linux
+   venv\Scripts\activate     # Windows
+4. Install dependencies:
+   pip install -r requirements.txt
+
+## Usage
+From the repository root run:
 python model5.py
 
-## Analyze:
-The script will present a menu.
-Enter the number corresponding to the stock you wish to analyze (1 for Tesla, 2 for Amazon, 3 for Google).
-The script will output the model's performance metrics and display a plot of the results.
-Enter 'q' to quit.
+The script launches a simple text menu:
+- 1: Analyze Tesla (TSLA.csv)
+- 2: Analyze Amazon (Amazon.csv)
+- 3: Analyze Google (GOOGL.csv)
+- q: Quit
 
-## Disclaimer
-This project is for educational purposes only. The linear regression model used is very simple and should not be used for real-world financial advice or trading.
+Selecting a company will:
+- Load the respective CSV,
+- Compute features,
+- Train a linear regression on the first 80% of the chronological data,
+- Evaluate on the remaining 20%,
+- Print model intercept and coefficients,
+- Print RMSE, MAPE, and R²,
+- Display a plot comparing actual vs predicted prices.
 
+Note: model5.py expects CSV files to be present in the same directory (they are included in the repo).
+
+## How the model works (brief)
+- Target: next-day close price (Close shifted by -1).
+- Features: Open, High, Low, Close, Volume, 7-day MA, 30-day MA, 7-day Std, Range (High - Low).
+- Split: chronological 80% train / 20% test (no shuffling).
+- Model: sklearn.linear_model.LinearRegression (ordinary least squares).
+- Metrics: RMSE, MAPE, R².
+- Visualization: matplotlib plot of actual vs predicted prices for the test partition.
+
+## Dataset
+Included example CSV files:
+- TSLA.csv
+- Amazon.csv
+- GOOGL.csv
+
+Each CSV is expected to contain at least the columns: Date, Open, High, Low, Close, Volume.
+
+## Training & Evaluation notes
+- The script trains a new model each time you run an analysis for a company.
+- Because features include the unscaled price columns, linear regression coefficients are in price units — consider standardizing if comparing coefficient magnitudes or using regularization.
+- Model evaluation is reported on the chronologically last 20% — appropriate for time-series holdout, but consider cross-validation strategies designed for time-series (e.g., expanding window) for more robust assessment.
+
+## Results (expected)
+- The baseline linear regression typically produces a simple baseline forecast. Expect relatively high errors for volatile stocks; metrics printed by the script (RMSE, MAPE, R²) quantify performance.
+- The model prints the intercept and coefficients so you can inspect feature impacts.
+
+## File structure
+- .gitignore
+- README.md
+- requirements.txt
+- model5.py        — main script; menu-driven CLI and analysis function
+- TSLA.csv
+- Amazon.csv
+- GOOGL.csv
+
+## Contributing
+Contributions and suggestions are welcome. Suggested workflow:
+- Fork the repo
+- Create a feature branch
+- Open a pull request describing changes
+
+## License
+Specify a license if you want this project to be open-source (e.g., MIT). If you want me to add a specific license file or badge, tell me which one.
