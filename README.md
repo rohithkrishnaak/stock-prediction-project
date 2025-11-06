@@ -1,4 +1,4 @@
-Stock Price Prediction Model
+# Stock Price Prediction Model
 
 This project uses a simple Linear Regression model to predict future stock closing prices based on historical data. The Python script provides an interactive menu to analyze different stock datasets.
 
@@ -55,5 +55,6 @@ The script will output the model's performance metrics and display a plot of the
 Enter 'q' to quit.
 
 Disclaimer
+
 
 This project is for educational purposes only. The linear regression model used is very simple and should not be used for real-world financial advice or trading.
