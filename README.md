@@ -1,5 +1,5 @@
 # Stock Prediction Project
-A simple stock price prediction demo using a linear regression model in Python. This repository contains example CSVs (TSLA, Amazon, GOOGL), a single analysis script (model5.py), and a requirements.txt to reproduce the environment.
+A simple stock price prediction demo using a linear regression model in Python. This repository contains example CSVs (TSLA, Amazon, GOOGL), a single analysis script (static_model.py), and a requirements.txt to reproduce the environment.
 
 ## Project overview
 This project demonstrates a straightforward workflow to:
@@ -94,4 +94,5 @@ Contributions and suggestions are welcome. Suggested workflow:
 - Fork the repo
 - Create a feature branch
 - Open a pull request describing changes
+
 
