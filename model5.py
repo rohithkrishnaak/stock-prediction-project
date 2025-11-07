@@ -108,7 +108,7 @@ def main_menu():
         print("  3: Google (GOOGL.CSV)")
         print("  q: Quit")
         
-        choice = input("Enter your choice (1, 2, or q): ").strip().lower()
+        choice = input("Enter your choice (1, 2, 3, or q): ").strip().lower()
         
         if choice == '1':
             analyze_stock(csv_filename='TSLA.csv', company_name='Tesla')
@@ -127,4 +127,5 @@ def main_menu():
             print("Invalid choice. Please enter 1, 2, or q.")
 
 if __name__ == "__main__":
+
     main_menu()
