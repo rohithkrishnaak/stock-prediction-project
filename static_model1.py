@@ -106,9 +106,12 @@ def main_menu():
         print("  1: Tesla (TSLA.csv)")
         print("  2: Amazon (Amazon.csv)")
         print("  3: Google (GOOGL.CSV)")
+        print("  4: Facebook (Facebook.csv)")
+        print("  5: Netflix (Netflix.csv)")
+        print("  6: Apple (Apple.csv)")
         print("  q: Quit")
         
-        choice = input("Enter your choice (1, 2, 3, or q): ").strip().lower()
+        choice = input("Enter your choice (1, 2, 3, 4, 5, 6 or q): ").strip().lower()
         
         if choice == '1':
             analyze_stock(csv_filename='TSLA.csv', company_name='Tesla')
@@ -119,14 +122,21 @@ def main_menu():
         elif choice=='3':
             analyze_stock(csv_filename='GOOGL.csv', company_name='Google')
 
+        elif choice == '4':
+            analyze_stock(csv_filename='Facebook.xls', company_name='Facebook')
+
+        elif choice == '5':
+            analyze_stock(csv_filename='Netflix.xls', company_name='Netflix')
+
+        elif choice == '6':
+            analyze_stock(csv_filename='Apple.xls', company_name='Apple')
+
         elif choice == 'q':
             print("Exiting program. Goodbye!")
             break # Exit the while loop
             
         else:
-            print("Invalid choice. Please enter 1, 2, or q.")
+            print("Invalid choice. Please enter 1, 2, 3, 4, 5, 6 or q.")
 
 if __name__ == "__main__":
-
     main_menu()
-
